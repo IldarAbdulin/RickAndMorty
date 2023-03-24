@@ -1,0 +1,6 @@
+.footer {
+  @apply border-t-2 h-[10vh] flex items-center justify-center;
+  h1 {
+    @apply text-center text-[#212121] text-[18px] font-mono;
+  }
+}

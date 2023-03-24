@@ -1,0 +1,12 @@
+.header {
+  @apply border-b-2 shadow-lg;
+  &__main {
+    @apply flex justify-between items-center h-[10vh];
+    .main__links {
+      @apply flex gap-6;
+      a {
+        @apply text-[18px] font-bold text-gray-600 duration-200 hover:text-gray-900;
+      }
+    }
+  }
+}
