@@ -1,6 +1,9 @@
 .characters {
   @apply h-[75vh];
-  h1 {
-    @apply mt-5 text-center text-[30px] text-purple-800;
+  &__image {
+    @apply mt-4 mb-6 flex justify-center;
+  }
+  &__selectors {
+    @apply flex justify-between gap-20;
   }
 }

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Container } from '@mui/material';
-import CustomLink from '@/components/ui/link/Link';
+import CustomLink from '@/components/ui/link/CustomLink';
 
 const Header: FC = () => {
   return (
