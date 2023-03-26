@@ -1,13 +1,15 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Box, MenuItem } from '@mui/material';
-
+import { specieses, statuses, genders } from '@/constants';
 import Layout from '@/components/layout/Layout';
 import CustomSelect from '@/components/ui/select/CustomSelect';
-import { specieses, statuses, genders } from '@/constants';
 import CustomInput from '@/components/ui/input/CustomInput';
+import { ICharacterData } from '@/interfaces/characters.interface';
+import CharacterCart from './character/CharacterCart';
 
-const Characters: FC = () => {
+const CharactersPage: FC<ICharacterData> = ({ characters }) => {
   const [species, setSpecies] = useState<string>('');
   const [gender, setGender] = useState<string>('');
   const [status, setStatus] = useState<string>('');
@@ -67,8 +69,23 @@ const Characters: FC = () => {
             ))}
           </CustomSelect>
         </Box>
+        <Box className="characters__main mt-10">
+          {characters ? (
+            characters.map((character) => (
+              <Link
+                key={character.id}
+                href={`characters/${character.id}`}
+                className="mb-6"
+              >
+                <CharacterCart character={character} />
+              </Link>
+            ))
+          ) : (
+            <Box>Users Not Found!</Box>
+          )}
+        </Box>
       </Box>
     </Layout>
   );
 };
-export default Characters;
+export default CharactersPage;

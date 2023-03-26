@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'rickandmortyapi.com',
+      },
+    ],
+  },
   env: {
-    GET_CHARACTERS: process.env.GET_CHARACTERS,
-    GET_LOCATIONS: process.env.GET_LOCATIONS,
-    GET_EPISODES: process.env.GET_EPISODES,
+    BASE_URL: process.env.BASE_URL,
   }
 }
 

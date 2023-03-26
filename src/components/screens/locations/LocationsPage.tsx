@@ -1,12 +1,15 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Box } from '@mui/material';
 
 import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
 import CustomSelect from '@/components/ui/select/CustomSelect';
+import { ILocationData } from '@/interfaces/locations.interface';
+import LocationCart from './location/LocationCart';
 
-const Locations: FC = () => {
+const Locations: FC<ILocationData> = ({ locations }) => {
   const [type, setType] = useState<string>('');
   const [dimension, setDimension] = useState<string>('');
   const [name, setName] = useState<string>('');
@@ -40,6 +43,17 @@ const Locations: FC = () => {
             elemValue={dimension}
             setElemValue={setDimension}
           ></CustomSelect>
+        </Box>
+        <Box className="my-6 flex flex-wrap justify-between">
+          {locations ? (
+            locations.map((location) => (
+              <Link href={`locations/${location.id}`} key={location.id}>
+                <LocationCart location={location} />
+              </Link>
+            ))
+          ) : (
+            <Box>Locations is not defind!</Box>
+          )}
         </Box>
       </Box>
     </Layout>

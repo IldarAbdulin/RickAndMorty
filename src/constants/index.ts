@@ -1,4 +1,4 @@
-import { IGenders, ISpecieses, IStatus } from '@/interfaces';
+import { IGenders, ISpecieses, IStatus } from '@/interfaces/selects.interface';
 
 export const statuses: IStatus[] = [
   {
@@ -37,5 +37,6 @@ export const genders: IGenders[] = [
 export const specieses: ISpecieses[] = [
   { id: 1, title: 'Human' },
   { id: 2, title: 'Alien' },
-  { id: 2, title: 'unknown' },
+  { id: 3, title: 'Humanoid' },
+  { id: 4, title: 'unknown' },
 ];

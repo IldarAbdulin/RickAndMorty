@@ -1,11 +1,14 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Box } from '@mui/material';
 
 import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
+import { IEpisodeData } from '@/interfaces/epidodes.interface';
+import EpisodeCart from './episode/EpisodeCart';
 
-const Episodes: FC = () => {
+const Episodes: FC<IEpisodeData> = ({ episodes }) => {
   const [name, setName] = useState<string>('');
   return (
     <Layout title="Episodes">
@@ -25,6 +28,17 @@ const Episodes: FC = () => {
             setValue={setName}
             className="w-[60%]"
           />
+        </Box>
+        <Box className="my-6 flex flex-wrap justify-between">
+          {episodes ? (
+            episodes.map((episode) => (
+              <Link href={`episodes/${episode.id}`} key={episode.id}>
+                <EpisodeCart episode={episode} />
+              </Link>
+            ))
+          ) : (
+            <Box>Episodes is not defind!</Box>
+          )}
         </Box>
       </Box>
     </Layout>

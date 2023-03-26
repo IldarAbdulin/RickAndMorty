@@ -1,9 +1,22 @@
-import Locations from '@/components/screens/locations/Locations';
+import { GetStaticProps, NextPage } from 'next';
 
-export default function LocationPage() {
+import { LocationsService } from '@/services/locations.service';
+import Locations from '@/components/screens/locations/LocationsPage';
+import { ILocationData } from '@/interfaces/locations.interface';
+
+const LocationPage: NextPage<ILocationData> = ({ locations }) => {
   return (
     <>
-      <Locations />
+      <Locations locations={locations} />
     </>
   );
-}
+};
+
+export const getServerSideProps: GetStaticProps<ILocationData> = async () => {
+  const locations = await LocationsService.getAll();
+  return {
+    props: { locations },
+  };
+};
+
+export default LocationPage;

@@ -1,9 +1,21 @@
-import Characters from '@/components/screens/characters/Characters';
+import { NextPage, GetStaticProps } from 'next';
+import CharactersPage from '@/components/screens/characters/CharactersPage';
+import { ICharacterData } from '@/interfaces/characters.interface';
+import { CharacterService } from '@/services/character.service';
 
-export default function Home() {
+const Home: NextPage<ICharacterData> = ({ characters }) => {
   return (
     <>
-      <Characters />
+      <CharactersPage characters={characters} />
     </>
   );
-}
+};
+
+export const getServerSideProps: GetStaticProps<ICharacterData> = async () => {
+  const characters = await CharacterService.getAll();
+  return {
+    props: { characters },
+  };
+};
+
+export default Home;

@@ -18,8 +18,18 @@
 
 ---
 
-# 2-nd commit:
+# 3-rd commit:
 
 ### 1) added interface, ui components
+
+---
+
+# 4-th commit:
+
+### 1) added interface
+
+### 2) added services ( character, episodes, locations )
+
+### 3) added more pages
 
 ---

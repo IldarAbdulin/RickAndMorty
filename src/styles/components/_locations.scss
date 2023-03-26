@@ -1,6 +1,11 @@
 .locations {
-  @apply h-[75vh];
   &__image {
     @apply mt-4 flex justify-center;
+  }
+  h5 {
+    width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
