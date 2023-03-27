@@ -33,3 +33,9 @@
 ### 3) added more pages
 
 ---
+
+# 5-th commit:
+
+### 1) added redux
+
+---

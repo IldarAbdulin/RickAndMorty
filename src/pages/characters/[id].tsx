@@ -1,6 +1,13 @@
-import { FC } from 'react';
+import { NextPage } from 'next';
+import { ICharacterDataById } from '@/interfaces/characters.interface';
+import CharacterDetail from '@/components/screens/characters/character/CharacterDetail';
 
-const LocationSinglePage = () => {
-  return <h1>LocationSinglePage</h1>;
+const CharacterSinglePage: NextPage<ICharacterDataById> = ({ character }) => {
+  return (
+    <>
+      <CharacterDetail character={character} />
+    </>
+  );
 };
-export default LocationSinglePage;
+
+export default CharacterSinglePage;
