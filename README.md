@@ -39,3 +39,13 @@
 ### 1) added redux
 
 ---
+
+# 6-th commit:
+
+### 1) added slices
+
+### 2) added three pages
+
+### 3) added three single-pages
+
+---

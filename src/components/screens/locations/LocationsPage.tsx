@@ -8,6 +8,7 @@ import CustomInput from '@/components/ui/input/CustomInput';
 import CustomSelect from '@/components/ui/select/CustomSelect';
 import { ILocationData } from '@/interfaces/locations.interface';
 import LocationCart from './location/LocationCart';
+import CustomButton from '@/components/ui/button/CustomButton';
 
 const Locations: FC<ILocationData> = ({ locations }) => {
   const [type, setType] = useState<string>('');
@@ -54,6 +55,9 @@ const Locations: FC<ILocationData> = ({ locations }) => {
           ) : (
             <Box>Locations is not defind!</Box>
           )}
+        </Box>
+        <Box className="flex justify-center mb-[50px]">
+          <CustomButton>Load more</CustomButton>
         </Box>
       </Box>
     </Layout>

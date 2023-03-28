@@ -1,22 +1,21 @@
-import { GetStaticProps, NextPage } from 'next';
-
-import { LocationsService } from '@/services/locations.service';
+import { NextPage } from 'next';
 import Locations from '@/components/screens/locations/LocationsPage';
 import { ILocationData } from '@/interfaces/locations.interface';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useEffect } from 'react';
+import { getLocations } from '@/redux/slices/location-slice';
 
-const LocationPage: NextPage<ILocationData> = ({ locations }) => {
+const LocationPage: NextPage = () => {
+  const { locations } = useAppSelector(({ locationSlice }) => locationSlice);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getLocations());
+  }, [dispatch]);
   return (
     <>
       <Locations locations={locations} />
     </>
   );
-};
-
-export const getServerSideProps: GetStaticProps<ILocationData> = async () => {
-  const locations = await LocationsService.getAll();
-  return {
-    props: { locations },
-  };
 };
 
 export default LocationPage;

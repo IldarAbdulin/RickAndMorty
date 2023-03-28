@@ -8,6 +8,7 @@ import CustomSelect from '@/components/ui/select/CustomSelect';
 import CustomInput from '@/components/ui/input/CustomInput';
 import { ICharacterData } from '@/interfaces/characters.interface';
 import CharacterCart from './character/CharacterCart';
+import CustomButton from '@/components/ui/button/CustomButton';
 
 const CharactersPage: FC<ICharacterData> = ({ characters }) => {
   const [species, setSpecies] = useState<string>('');
@@ -83,6 +84,9 @@ const CharactersPage: FC<ICharacterData> = ({ characters }) => {
           ) : (
             <Box>Users Not Found!</Box>
           )}
+        </Box>
+        <Box className="flex justify-center mb-[50px]">
+          <CustomButton>Load more</CustomButton>
         </Box>
       </Box>
     </Layout>

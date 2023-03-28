@@ -1,15 +1,5 @@
-export interface Info<T> {
-  info?: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
-  results?: T;
-}
-
 export interface ICharacter {
-  id: string;
+  id: number;
   name: string;
   status: string;
   species: string;

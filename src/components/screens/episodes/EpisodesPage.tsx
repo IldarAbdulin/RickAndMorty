@@ -7,6 +7,7 @@ import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
 import { IEpisodeData } from '@/interfaces/epidodes.interface';
 import EpisodeCart from './episode/EpisodeCart';
+import CustomButton from '@/components/ui/button/CustomButton';
 
 const Episodes: FC<IEpisodeData> = ({ episodes }) => {
   const [name, setName] = useState<string>('');
@@ -39,6 +40,9 @@ const Episodes: FC<IEpisodeData> = ({ episodes }) => {
           ) : (
             <Box>Episodes is not defind!</Box>
           )}
+        </Box>
+        <Box className="flex justify-center mb-[50px]">
+          <CustomButton>Load more</CustomButton>
         </Box>
       </Box>
     </Layout>
