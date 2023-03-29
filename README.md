@@ -49,3 +49,9 @@
 ### 3) added three single-pages
 
 ---
+
+# 7-th commit:
+
+### 1) style single screens
+
+---

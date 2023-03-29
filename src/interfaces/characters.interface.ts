@@ -6,6 +6,14 @@ export interface ICharacter {
   gender: string;
   type: string;
   image: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
 }
 export interface ICharacterData {
   characters: ICharacter[];
