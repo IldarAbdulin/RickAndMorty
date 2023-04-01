@@ -4,14 +4,14 @@ import axios from 'axios';
 
 axios.defaults.baseURL = process.env.BASE_URL;
 
-export const getLocations = createAsyncThunk<
-  ILocation[],
-  undefined,
-  { rejectValue: string }
->('getCharacters', async function (_, {}) {
-  const { data } = await axios.get('/location');
-  return data.results;
-});
+export const getLocations = createAsyncThunk<ILocation[], number>(
+  'getCharacters',
+  async function (numberPapge, { dispatch }) {
+    const { data } = await axios.get(`/location/?page=${numberPapge}`);
+    dispatch(totalPages(data.info.pages));
+    return data.results;
+  }
+);
 
 export const getLocationById = createAsyncThunk<ILocation, number>(
   'getLocationById',
@@ -24,19 +24,25 @@ export const getLocationById = createAsyncThunk<ILocation, number>(
 type LocationState = {
   locations: ILocation[];
   loading: boolean;
+  pages: number;
   location: ILocation;
 };
 
 const initialState: LocationState = {
   locations: [],
   loading: false,
+  pages: 0,
   location: {},
 };
 
 export const locationSlice = createSlice({
   name: 'locationSlice',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    totalPages: (state, action) => {
+      state.pages = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getLocations.pending, (state) => {
       state.loading = true;
@@ -54,3 +60,4 @@ export const locationSlice = createSlice({
     });
   },
 });
+const { totalPages } = locationSlice.actions;

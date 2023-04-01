@@ -17,6 +17,9 @@ export interface ICharacter {
 }
 export interface ICharacterData {
   characters: ICharacter[];
+  pages: number;
+  page: number;
+  setPage: (value: number) => void;
 }
 export interface ICharacterDataById {
   character: ICharacter;

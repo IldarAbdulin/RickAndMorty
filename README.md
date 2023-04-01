@@ -55,3 +55,11 @@
 ### 1) style single screens
 
 ---
+
+# 8-th commit:
+
+### 1) added pagintaion for character page, location page and episode page
+
+### 2) redid types
+
+---

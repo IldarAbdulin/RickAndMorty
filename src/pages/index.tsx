@@ -1,23 +1,29 @@
+import { useState } from 'react';
 import { NextPage } from 'next';
 import CharactersPage from '@/components/screens/characters/CharactersPage';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { useEffect } from 'react';
 import { getCharacters } from '@/redux/slices/character-slice';
-import CustomLoader from '@/components/ui/loader/CustomLoader';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
-  const { characters, loading } = useAppSelector(
+  const { characters, pages } = useAppSelector(
     ({ characterSlice }) => characterSlice
   );
+  const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getCharacters());
-  }, [dispatch]);
-  console.log(loading);
+    dispatch(getCharacters(page));
+  }, [dispatch, page, setPage]);
 
   return (
     <>
-      <CharactersPage characters={characters} />
+      <CharactersPage
+        characters={characters}
+        pages={pages}
+        page={page}
+        setPage={setPage}
+      />
     </>
   );
 };

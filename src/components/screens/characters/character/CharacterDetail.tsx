@@ -67,7 +67,7 @@ const CharacterDetail: FC<ICharacterDataById> = ({ character }) => {
             </Box>
             <hr />
             <Box className="py-2 px-1 shadow-lg">
-              <Link href={`location/1`}>
+              <Link href={`../locations/1`}>
                 <Typography className="text-[#081F32] text-[16px] font-bold">
                   Origin
                 </Typography>
@@ -87,12 +87,14 @@ const CharacterDetail: FC<ICharacterDataById> = ({ character }) => {
             </Box>
             <hr />
             <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Location
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                {character.location && character.location.name}
-              </Typography>
+              <Link href={`../locations/20`}>
+                <Typography className="text-[#081F32] text-[16px] font-bold">
+                  Location
+                </Typography>
+                <Typography className="text-[#6E798C] text-[14px]">
+                  {character.location && character.location.name}
+                </Typography>
+              </Link>
             </Box>
             <hr />
           </Box>

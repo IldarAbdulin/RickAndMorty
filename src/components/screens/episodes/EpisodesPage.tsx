@@ -1,15 +1,14 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
 
 import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
 import { IEpisodeData } from '@/interfaces/epidodes.interface';
 import EpisodeCart from './episode/EpisodeCart';
-import CustomButton from '@/components/ui/button/CustomButton';
 
-const Episodes: FC<IEpisodeData> = ({ episodes }) => {
+const Episodes: FC<IEpisodeData> = ({ episodes, page, pages, setPage }) => {
   const [name, setName] = useState<string>('');
   return (
     <Layout title="Episodes">
@@ -41,8 +40,17 @@ const Episodes: FC<IEpisodeData> = ({ episodes }) => {
             <Box>Episodes is not defind!</Box>
           )}
         </Box>
-        <Box className="flex justify-center mb-[50px]">
-          <CustomButton>Load more</CustomButton>
+        <Box className="flex justify-center mb-[50px] gap-5">
+          <Pagination
+            count={pages}
+            page={page}
+            onChange={(_, num) => setPage(num)}
+            showFirstButton
+            showLastButton
+            color="primary"
+            variant="outlined"
+            size="large"
+          />
         </Box>
       </Box>
     </Layout>

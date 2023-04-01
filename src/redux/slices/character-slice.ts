@@ -6,10 +6,11 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 export const getCharacters = createAsyncThunk<
   ICharacter[],
-  undefined,
+  number,
   { rejectValue: string }
->('getCharacters', async function (_, {}) {
-  const { data } = await axios.get('/character');
+>('getCharacters', async function (numberPage, { dispatch }) {
+  const { data } = await axios.get(`/character/?page=${numberPage}`);
+  dispatch(totalPages(data.info.pages));
   return data.results;
 });
 
@@ -23,20 +24,28 @@ export const getCharacterById = createAsyncThunk<ICharacter, number>(
 
 type CharacterState = {
   characters: ICharacter[];
+  pages: number;
   loading: boolean;
   character: ICharacter;
+  nextPage: string;
 };
 
 const initialState: CharacterState = {
   characters: [],
   loading: false,
+  pages: 0,
   character: {},
+  nextPage: '',
 };
 
 export const characterSlice = createSlice({
   name: 'characterSlice',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    totalPages: (state, action) => {
+      state.pages = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.pending, (state) => {
       state.loading = true;
@@ -54,3 +63,5 @@ export const characterSlice = createSlice({
     });
   },
 });
+
+const { totalPages } = characterSlice.actions;

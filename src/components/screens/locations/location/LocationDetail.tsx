@@ -42,6 +42,11 @@ const LocationDetail: FC<ILocationDataById> = ({ location }) => {
           </Typography>
         </Box>
       </Box>
+      <Box>
+        <Typography className="my-3 text-[#8E8E93] text-[20px] font-medium">
+          Residents
+        </Typography>
+      </Box>
     </Layout>
   );
 };

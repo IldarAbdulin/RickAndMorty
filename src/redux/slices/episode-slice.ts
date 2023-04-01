@@ -7,10 +7,11 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 export const getEpidodes = createAsyncThunk<
   IEpisode[],
-  undefined,
+  number,
   { rejectValue: string }
->('getCharacters', async function (_, {}) {
-  const { data } = await axios.get('/episode');
+>('getCharacters', async function (numberPage, { dispatch }) {
+  const { data } = await axios.get(`/episode/?page=${numberPage}`);
+  dispatch(totalPages(data.info.pages));
   return data.results;
 });
 
@@ -24,12 +25,14 @@ export const getEpisodeById = createAsyncThunk<IEpisode, number>(
 
 type EpisodeState = {
   episodes: IEpisode[];
+  pages: number;
   loading: boolean;
   episode: IEpisode;
 };
 
 const initialState: EpisodeState = {
   episodes: [],
+  pages: 0,
   loading: false,
   episode: {},
 };
@@ -37,7 +40,11 @@ const initialState: EpisodeState = {
 export const episodeSlice = createSlice({
   name: 'episodeSlice',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    totalPages: (state, action) => {
+      state.pages = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getEpidodes.pending, (state) => {
       state.loading = true;
@@ -55,3 +62,4 @@ export const episodeSlice = createSlice({
     });
   },
 });
+const { totalPages } = episodeSlice.actions;

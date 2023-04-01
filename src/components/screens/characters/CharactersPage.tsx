@@ -1,16 +1,20 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, MenuItem } from '@mui/material';
+import { Box, MenuItem, Pagination, PaginationItem } from '@mui/material';
 import { specieses, statuses, genders } from '@/constants';
 import Layout from '@/components/layout/Layout';
 import CustomSelect from '@/components/ui/select/CustomSelect';
 import CustomInput from '@/components/ui/input/CustomInput';
 import { ICharacterData } from '@/interfaces/characters.interface';
 import CharacterCart from './character/CharacterCart';
-import CustomButton from '@/components/ui/button/CustomButton';
 
-const CharactersPage: FC<ICharacterData> = ({ characters }) => {
+const CharactersPage: FC<ICharacterData> = ({
+  characters,
+  pages,
+  page,
+  setPage,
+}) => {
   const [species, setSpecies] = useState<string>('');
   const [gender, setGender] = useState<string>('');
   const [status, setStatus] = useState<string>('');
@@ -85,8 +89,17 @@ const CharactersPage: FC<ICharacterData> = ({ characters }) => {
             <Box>Users Not Found!</Box>
           )}
         </Box>
-        <Box className="flex justify-center mb-[50px]">
-          <CustomButton>Load more</CustomButton>
+        <Box className="flex justify-center mb-[50px] gap-5">
+          <Pagination
+            count={pages}
+            page={page}
+            onChange={(_, num) => setPage(num)}
+            showFirstButton
+            showLastButton
+            color="primary"
+            variant="outlined"
+            size="large"
+          />
         </Box>
       </Box>
     </Layout>

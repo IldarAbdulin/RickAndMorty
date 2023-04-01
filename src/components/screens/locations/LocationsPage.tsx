@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
 
 import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
@@ -10,7 +10,7 @@ import { ILocationData } from '@/interfaces/locations.interface';
 import LocationCart from './location/LocationCart';
 import CustomButton from '@/components/ui/button/CustomButton';
 
-const Locations: FC<ILocationData> = ({ locations }) => {
+const Locations: FC<ILocationData> = ({ locations, pages, page, setPage }) => {
   const [type, setType] = useState<string>('');
   const [dimension, setDimension] = useState<string>('');
   const [name, setName] = useState<string>('');
@@ -56,8 +56,17 @@ const Locations: FC<ILocationData> = ({ locations }) => {
             <Box>Locations is not defind!</Box>
           )}
         </Box>
-        <Box className="flex justify-center mb-[50px]">
-          <CustomButton>Load more</CustomButton>
+        <Box className="flex justify-center mb-[50px] gap-5">
+          <Pagination
+            count={pages}
+            page={page}
+            onChange={(_, num) => setPage(num)}
+            showFirstButton
+            showLastButton
+            color="primary"
+            variant="outlined"
+            size="large"
+          />
         </Box>
       </Box>
     </Layout>
