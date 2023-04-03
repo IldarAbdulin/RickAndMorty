@@ -4,10 +4,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = process.env.BASE_URL;
 
-export const getLocations = createAsyncThunk<ILocation[], number>(
+export const getLocations = createAsyncThunk<ILocation[], any>(
   'getCharacters',
-  async function (numberPapge, { dispatch }) {
-    const { data } = await axios.get(`/location/?page=${numberPapge}`);
+  async function (args, { dispatch }) {
+    const { page, name, type, dimension } = args;
+    const { data } = await axios.get(
+      `/location/?page=${page}&name=${name}&type=${type}&dimension=${dimension}`
+    );
     dispatch(totalPages(data.info.pages));
     return data.results;
   }

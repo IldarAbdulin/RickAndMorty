@@ -6,17 +6,20 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 export const getCharacters = createAsyncThunk<
   ICharacter[],
-  number,
+  any,
   { rejectValue: string }
->('getCharacters', async function (numberPage, { dispatch }) {
-  const { data } = await axios.get(`/character/?page=${numberPage}`);
+>('getCharacters', async function (myArgs, { dispatch }) {
+  const { page, name, species, gender, status } = myArgs;
+  const { data } = await axios.get(
+    `/character/?page=${page}&name=${name}&species=${species}&gender=${gender}&status=${status}`
+  );
   dispatch(totalPages(data.info.pages));
   return data.results;
 });
 
 export const getCharacterById = createAsyncThunk<ICharacter, number>(
   'getCharacterById',
-  async function (id: number) {
+  async function (id) {
     const { data } = await axios.get(`/character/${id}`);
     return data;
   }

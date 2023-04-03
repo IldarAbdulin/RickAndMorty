@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Pagination } from '@mui/material';
+import { Box, MenuItem, Pagination } from '@mui/material';
 
 import Layout from '@/components/layout/Layout';
 import CustomInput from '@/components/ui/input/CustomInput';
@@ -9,11 +9,20 @@ import CustomSelect from '@/components/ui/select/CustomSelect';
 import { ILocationData } from '@/interfaces/locations.interface';
 import LocationCart from './location/LocationCart';
 import CustomButton from '@/components/ui/button/CustomButton';
+import { locationsDimensions, locationsTypes } from '@/constants';
 
-const Locations: FC<ILocationData> = ({ locations, pages, page, setPage }) => {
-  const [type, setType] = useState<string>('');
-  const [dimension, setDimension] = useState<string>('');
-  const [name, setName] = useState<string>('');
+const Locations: FC<ILocationData> = ({
+  locations,
+  pages,
+  page,
+  setPage,
+  name,
+  setName,
+  type,
+  setType,
+  dimension,
+  setDimension,
+}) => {
   return (
     <Layout title="Locations">
       <Box className="locations">
@@ -37,13 +46,25 @@ const Locations: FC<ILocationData> = ({ locations, pages, page, setPage }) => {
             inputLabel="Type"
             elemValue={type}
             setElemValue={setType}
-          ></CustomSelect>
+          >
+            {locationsTypes.map((type) => (
+              <MenuItem key={type.id} value={type.type}>
+                {type.type}
+              </MenuItem>
+            ))}
+          </CustomSelect>
           <CustomSelect
             className="w-[240px]"
             inputLabel="Dimension"
             elemValue={dimension}
             setElemValue={setDimension}
-          ></CustomSelect>
+          >
+            {locationsDimensions.map((dimension) => (
+              <MenuItem key={dimension.id} value={dimension.dimension}>
+                {dimension.dimension}
+              </MenuItem>
+            ))}
+          </CustomSelect>
         </Box>
         <Box className="my-6 flex flex-wrap justify-between">
           {locations ? (

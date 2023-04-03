@@ -7,14 +7,15 @@ import { useEffect } from 'react';
 import { getEpidodes } from '@/redux/slices/episode-slice';
 
 const EpisodesPage: NextPage = () => {
-  const [page, setPage] = useState(1);
   const { episodes, pages } = useAppSelector(
     ({ episodeSlice }) => episodeSlice
   );
+  const [page, setPage] = useState(1);
+  const [name, setName] = useState<string>('');
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getEpidodes(page));
-  }, [dispatch, page, setPage]);
+    dispatch(getEpidodes({ page, name }));
+  }, [dispatch, page, name]);
   return (
     <>
       <Episodes
@@ -22,6 +23,8 @@ const EpisodesPage: NextPage = () => {
         pages={pages}
         page={page}
         setPage={setPage}
+        name={name}
+        setName={setName}
       />
     </>
   );

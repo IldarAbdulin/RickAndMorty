@@ -7,10 +7,11 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 export const getEpidodes = createAsyncThunk<
   IEpisode[],
-  number,
+  any,
   { rejectValue: string }
->('getCharacters', async function (numberPage, { dispatch }) {
-  const { data } = await axios.get(`/episode/?page=${numberPage}`);
+>('getCharacters', async function (args, { dispatch }) {
+  const { page, name } = args;
+  const { data } = await axios.get(`/episode/?page=${page}&name=${name}`);
   dispatch(totalPages(data.info.pages));
   return data.results;
 });

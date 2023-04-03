@@ -9,6 +9,8 @@ export interface IEpisodeData {
   pages: number;
   page: number;
   setPage: (value: number) => void;
+  name: string;
+  setName: (value: string) => void;
 }
 export interface IEpisodeDataById {
   episode: IEpisode;

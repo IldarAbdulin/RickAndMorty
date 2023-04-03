@@ -20,6 +20,14 @@ export interface ICharacterData {
   pages: number;
   page: number;
   setPage: (value: number) => void;
+  name: string;
+  setName: (value: string) => void;
+  species: string;
+  setSpecies: (value: string) => void;
+  gender: string;
+  setGender: (value: string) => void;
+  status: string;
+  setStatus: (value: string) => void;
 }
 export interface ICharacterDataById {
   character: ICharacter;

@@ -10,3 +10,12 @@ export interface ISpecieses {
   id: number;
   title: string;
 }
+
+export interface ILocationTypes {
+  id: number;
+  type: string;
+}
+export interface ILocationDimensions {
+  id: number;
+  dimension: string;
+}

@@ -14,11 +14,15 @@ const CharactersPage: FC<ICharacterData> = ({
   pages,
   page,
   setPage,
+  name,
+  setName,
+  species,
+  setSpecies,
+  gender,
+  setGender,
+  status,
+  setStatus,
 }) => {
-  const [species, setSpecies] = useState<string>('');
-  const [gender, setGender] = useState<string>('');
-  const [status, setStatus] = useState<string>('');
-  const [name, setName] = useState<string>('');
   return (
     <Layout title="Characters">
       <Box className="characters">

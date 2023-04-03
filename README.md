@@ -63,3 +63,11 @@
 ### 2) redid types
 
 ---
+
+# 9-th commit:
+
+### 1) added filter by search, species, gender, status
+
+### 2) redid types
+
+---

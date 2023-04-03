@@ -8,8 +8,14 @@ import CustomInput from '@/components/ui/input/CustomInput';
 import { IEpisodeData } from '@/interfaces/epidodes.interface';
 import EpisodeCart from './episode/EpisodeCart';
 
-const Episodes: FC<IEpisodeData> = ({ episodes, page, pages, setPage }) => {
-  const [name, setName] = useState<string>('');
+const Episodes: FC<IEpisodeData> = ({
+  episodes,
+  page,
+  pages,
+  setPage,
+  name,
+  setName,
+}) => {
   return (
     <Layout title="Episodes">
       <Box className="episodes">
@@ -23,7 +29,7 @@ const Episodes: FC<IEpisodeData> = ({ episodes, page, pages, setPage }) => {
         </Box>
         <Box className="mt-6 flex justify-center">
           <CustomInput
-            label="Filter by name or episode (ex. S01 or S01E02)"
+            label="Filter by name"
             value={name}
             setValue={setName}
             className="w-[60%]"

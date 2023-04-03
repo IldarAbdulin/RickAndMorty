@@ -34,74 +34,9 @@ const CharacterDetail: FC<ICharacterDataById> = ({ character }) => {
         </Typography>
       </Box>
       <Box className="flex justify-around">
-        <Box className="my-10">
+        <Box className="mb-10">
           <Typography className="text-[#8E8E93] text-[20px] mb-5">
-            Informations
-          </Typography>
-          <Box className="w-[415px]">
-            <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Gender
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                {character.gender}
-              </Typography>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Status
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                {character.status}
-              </Typography>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Specie
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                {character.species}
-              </Typography>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Link href={`../locations/1`}>
-                <Typography className="text-[#081F32] text-[16px] font-bold">
-                  Origin
-                </Typography>
-                <Typography className="text-[#6E798C] text-[14px]">
-                  {character.origin && character.origin.name}
-                </Typography>
-              </Link>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Type
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                unknown
-              </Typography>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Link href={`../locations/20`}>
-                <Typography className="text-[#081F32] text-[16px] font-bold">
-                  Location
-                </Typography>
-                <Typography className="text-[#6E798C] text-[14px]">
-                  {character.location && character.location.name}
-                </Typography>
-              </Link>
-            </Box>
-            <hr />
-          </Box>
-        </Box>
-        <Box className="my-10">
-          <Typography className="text-[#8E8E93] text-[20px] mb-5">
-            Episodes
+            Information
           </Typography>
           <Box className="w-[415px]">
             <Box className="py-2 px-1 shadow-lg">
@@ -136,22 +71,13 @@ const CharacterDetail: FC<ICharacterDataById> = ({ character }) => {
                 Origin
               </Typography>
               <Typography className="text-[#6E798C] text-[14px]">
-                unknown
+                {character.origin && character.origin.name}
               </Typography>
             </Box>
             <hr />
             <Box className="py-2 px-1 shadow-lg">
               <Typography className="text-[#081F32] text-[16px] font-bold">
                 Type
-              </Typography>
-              <Typography className="text-[#6E798C] text-[14px]">
-                unknown
-              </Typography>
-            </Box>
-            <hr />
-            <Box className="py-2 px-1 shadow-lg">
-              <Typography className="text-[#081F32] text-[16px] font-bold">
-                Location
               </Typography>
               <Typography className="text-[#6E798C] text-[14px]">
                 unknown

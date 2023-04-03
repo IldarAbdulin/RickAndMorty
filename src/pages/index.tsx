@@ -10,11 +10,15 @@ const Home: NextPage = () => {
   const { characters, pages } = useAppSelector(
     ({ characterSlice }) => characterSlice
   );
+  const [species, setSpecies] = useState<string>('');
+  const [gender, setGender] = useState<string>('');
+  const [status, setStatus] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getCharacters(page));
-  }, [dispatch, page, setPage]);
+    dispatch(getCharacters({ page, name, species, gender, status }));
+  }, [dispatch, page, name, species, gender, status]);
 
   return (
     <>
@@ -23,6 +27,14 @@ const Home: NextPage = () => {
         pages={pages}
         page={page}
         setPage={setPage}
+        name={name}
+        setName={setName}
+        species={species}
+        setSpecies={setSpecies}
+        gender={gender}
+        setGender={setGender}
+        status={status}
+        setStatus={setStatus}
       />
     </>
   );

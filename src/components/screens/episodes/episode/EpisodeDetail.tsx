@@ -42,6 +42,11 @@ const EpisodesDetail: FC<IEpisodeDataById> = ({ episode }) => {
           </Typography>
         </Box>
       </Box>
+      <Box>
+        <Typography className="my-3 text-[#8E8E93] text-[20px] font-medium">
+          Cast
+        </Typography>
+      </Box>
     </Layout>
   );
 };

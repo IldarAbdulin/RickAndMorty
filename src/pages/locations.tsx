@@ -11,10 +11,13 @@ const LocationPage: NextPage = () => {
     ({ locationSlice }) => locationSlice
   );
   const [page, setPage] = useState<number>(0);
+  const [name, setName] = useState<string>('');
+  const [type, setType] = useState<string>('');
+  const [dimension, setDimension] = useState<string>('');
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getLocations(page));
-  }, [dispatch, page, setPage]);
+    dispatch(getLocations({ page, name, type, dimension }));
+  }, [dispatch, page, name, type, dimension]);
   return (
     <>
       <Locations
@@ -22,6 +25,12 @@ const LocationPage: NextPage = () => {
         pages={pages}
         page={page}
         setPage={setPage}
+        name={name}
+        setName={setName}
+        type={type}
+        setType={setType}
+        dimension={dimension}
+        setDimension={setDimension}
       />
     </>
   );
