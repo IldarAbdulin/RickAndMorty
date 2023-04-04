@@ -3,6 +3,7 @@ export interface IEpisode {
   name: string;
   air_date: string;
   episode: string;
+  characters: string[];
 }
 export interface IEpisodeData {
   episodes: IEpisode[];

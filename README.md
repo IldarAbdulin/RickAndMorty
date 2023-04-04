@@ -71,3 +71,9 @@
 ### 2) redid types
 
 ---
+
+# 10-th commit:
+
+### 1) added residents and characters in single pages (location[id], episode[id])
+
+---

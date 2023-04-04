@@ -22,10 +22,9 @@ const LocationDetail: FC<ILocationDataById> = ({ location }) => {
     location.residents &&
       location.residents.map(async (resident) => {
         const { data } = await axios.get(resident);
-        setResidents([data]);
+        setResidents([...residents, ...[data]]);
       });
-  }, [location]);
-  console.log(residents);
+  }, [location.id]);
 
   return (
     <Layout title={location.name}>
@@ -63,7 +62,7 @@ const LocationDetail: FC<ILocationDataById> = ({ location }) => {
           Residents
         </Typography>
         <Box className="flex justify-between flex-wrap">
-          {residents &&
+          {location &&
             residents.map((resident) => (
               <Link href={`../characters/${resident.id}`} key={resident.id}>
                 <Box className="w-[255px] border border-gray-300 shadow-lg rounded my-5">
