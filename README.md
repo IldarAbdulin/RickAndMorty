@@ -77,3 +77,9 @@
 ### 1) added residents and characters in single pages (location[id], episode[id])
 
 ---
+
+# 11-th commit:
+
+### 1) fixed bugs
+
+---

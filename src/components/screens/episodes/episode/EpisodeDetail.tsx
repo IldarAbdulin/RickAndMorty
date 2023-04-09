@@ -10,6 +10,8 @@ import Layout from '@/components/layout/Layout';
 import { IEpisodeDataById } from '@/interfaces/epidodes.interface';
 import { ICharacter } from '@/interfaces/characters.interface';
 
+let arr: ICharacter[] = [];
+
 const EpisodesDetail: FC<IEpisodeDataById> = ({ episode }) => {
   const router = useRouter();
   const goBack = () => {
@@ -18,12 +20,21 @@ const EpisodesDetail: FC<IEpisodeDataById> = ({ episode }) => {
 
   const [characters, setCharacters] = useState<ICharacter[]>([]);
 
-  useEffect(() => {
+  const getAllCharacters = () => {
     episode.characters &&
       episode.characters.map(async (character) => {
         const { data } = await axios.get(character);
-        setCharacters([data]);
+        arr.push(data);
+        setCharacters([...characters, ...arr]);
       });
+  };
+
+  useEffect(() => {
+    if (!arr.length) {
+      getAllCharacters();
+    } else {
+      arr = [];
+    }
   }, [episode]);
 
   return (

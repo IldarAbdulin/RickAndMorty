@@ -2,13 +2,15 @@ import { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import Image from 'next/image';
+import Link from 'next/link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import Layout from '@/components/layout/Layout';
 import { Box, Typography } from '@mui/material';
 import { ILocationDataById } from '@/interfaces/locations.interface';
 import { ICharacter } from '@/interfaces/characters.interface';
-import Link from 'next/link';
+
+let arr: ICharacter[] = [];
 
 const LocationDetail: FC<ILocationDataById> = ({ location }) => {
   const router = useRouter();
@@ -17,14 +19,22 @@ const LocationDetail: FC<ILocationDataById> = ({ location }) => {
   };
 
   const [residents, setResidents] = useState<ICharacter[]>([]);
-
-  useEffect(() => {
+  const getAllResidents = () => {
     location.residents &&
       location.residents.map(async (resident) => {
         const { data } = await axios.get(resident);
-        setResidents([...residents, ...[data]]);
+        arr.push(data);
+        setResidents([...residents, ...arr]);
       });
-  }, [location.id]);
+  };
+
+  useEffect(() => {
+    if (!arr.length) {
+      getAllResidents();
+    } else {
+      arr = [];
+    }
+  }, [location]);
 
   return (
     <Layout title={location.name}>
